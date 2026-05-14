@@ -3,8 +3,22 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0a0a" />
 <title>Sophireak Soeng — Cybersecurity & Developer</title>
 <meta name="description" content="Portfolio of Sophireak Soeng — Cybersecurity professional and full-stack developer. Pentesting, blue team, and web development." />
+<meta name="author" content="Sophireak Soeng" />
+<meta name="keywords" content="Sophireak Soeng, cybersecurity, pentesting, ethical hacking, developer, full-stack, portfolio, red team, blue team" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://sophireaksoeng.github.io/" />
+<meta property="og:title" content="Sophireak Soeng — Cybersecurity & Developer" />
+<meta property="og:description" content="I break things to make them stronger — and build software that's secure by design." />
+<meta property="og:image" content="https://sophireaksoeng.github.io/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Sophireak Soeng — Cybersecurity & Developer" />
+<meta name="twitter:description" content="I break things to make them stronger — and build software that's secure by design." />
+<meta name="twitter:image" content="https://sophireaksoeng.github.io/og-image.png" />
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="%230a0a0a"/><text x="50" y="68" font-family="ui-monospace,monospace" font-size="60" font-weight="700" text-anchor="middle" fill="%23fafafa">S</text></svg>' />
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -43,9 +57,7 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-
   body {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     background: var(--bg);
@@ -55,18 +67,14 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
   ::selection { background: var(--text); color: var(--bg); }
-
   a { color: inherit; text-decoration: none; }
-
   .container {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 24px;
   }
 
-  /* ---------- NAV ---------- */
   nav {
     position: sticky;
     top: 0;
@@ -137,10 +145,86 @@
     border-radius: 8px;
     cursor: pointer;
   }
-
-  /* ---------- HERO ---------- */
   .hero {
     padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(99,102,241,0.08), transparent 50%),
+      radial-gradient(circle at 80% 30%, rgba(16,185,129,0.06), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: ambient 18s ease-in-out infinite alternate;
+  }
+  [data-theme="dark"] .hero::before {
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(99,102,241,0.18), transparent 50%),
+      radial-gradient(circle at 80% 30%, rgba(16,185,129,0.12), transparent 50%);
+  }
+  @keyframes ambient {
+    0% { transform: translate3d(0,0,0) scale(1); opacity: 0.9; }
+    50% { transform: translate3d(20px,-15px,0) scale(1.05); opacity: 1; }
+    100% { transform: translate3d(-15px,10px,0) scale(1); opacity: 0.85; }
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 70%);
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero .container { position: relative; z-index: 1; }
+  .spotlight {
+    position: fixed;
+    pointer-events: none;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99,102,241,0.10) 0%, transparent 60%);
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    mix-blend-mode: screen;
+  }
+  [data-theme="dark"] .spotlight {
+    background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 60%);
+  }
+  body:hover .spotlight { opacity: 1; }
+  .hero h1 .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: wordIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes wordIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-sub, .hero-status, .hero-actions {
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .hero-status { animation-delay: 0.1s; }
+  .hero-sub { animation-delay: 0.9s; }
+  .hero-actions { animation-delay: 1.1s; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    .hero::before, .spotlight { display: none; }
   }
 
   .hero-status {
@@ -194,7 +278,6 @@
     gap: 12px;
     flex-wrap: wrap;
   }
-
   .btn {
     display: inline-flex;
     align-items: center;
@@ -225,10 +308,7 @@
     background: var(--accent-soft);
   }
   .btn svg { width: 16px; height: 16px; }
-
-  /* ---------- SECTIONS ---------- */
   section { padding: 80px 0; scroll-margin-top: 80px; }
-
   .section-label {
     font-family: var(--mono);
     font-size: 13px;
@@ -252,7 +332,6 @@
     font-size: 1.05rem;
   }
 
-  /* ---------- ABOUT ---------- */
   .about-grid {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
@@ -293,7 +372,78 @@
   .about-card li span:first-child { color: var(--text-subtle); }
   .about-card li span:last-child { color: var(--text); font-weight: 500; }
 
-  /* ---------- SKILLS ---------- */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: var(--mono);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+    font-family: var(--mono);
+  }
+
+  .certs-section { background: var(--bg-elev); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .cert-badge {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+  }
+  a.cert-badge:hover .cert-body small { color: var(--text); }
+  .cert-badge:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow);
+  }
+  .cert-icon {
+    width: 40px; height: 40px;
+    flex-shrink: 0;
+    background: var(--accent-soft);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+  }
+  .cert-icon svg { width: 18px; height: 18px; color: var(--text); }
+  .cert-body strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .cert-body small {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-subtle);
+  }
+
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -349,7 +499,6 @@
     border: 1px solid var(--border);
   }
 
-  /* ---------- PROJECTS ---------- */
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -440,7 +589,6 @@
   .project-links a:hover { color: var(--text); }
   .project-links svg { width: 14px; height: 14px; }
 
-  /* ---------- SKELETONS & GH META ---------- */
   .skeleton {
     background: linear-gradient(90deg, var(--tag-bg) 0%, var(--accent-soft) 50%, var(--tag-bg) 100%);
     background-size: 200% 100%;
@@ -486,7 +634,6 @@
     border-radius: var(--radius);
   }
 
-  /* ---------- CONTACT ---------- */
   .contact {
     background: var(--bg-elev);
     border-top: 1px solid var(--border);
@@ -591,7 +738,6 @@
     min-height: 18px;
   }
 
-  /* ---------- FOOTER ---------- */
   footer {
     padding: 32px 0;
     text-align: center;
@@ -600,7 +746,6 @@
     font-family: var(--mono);
   }
 
-  /* ---------- REVEAL ANIMATION ---------- */
   .reveal {
     opacity: 0;
     transform: translateY(20px);
@@ -611,9 +756,16 @@
     transform: translateY(0);
   }
 
-  /* ---------- RESPONSIVE ---------- */
+  @media print {
+    nav, .menu-toggle, .theme-toggle, .hero-status, .hero-actions, form, footer { display: none !important; }
+    body { background: white; color: black; font-size: 11pt; }
+    section { padding: 20px 0; page-break-inside: avoid; }
+    .hero { padding: 20px 0; }
+    .skill-card, .project-card, .cert-badge, .about-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+    a { color: black; text-decoration: underline; }
+    .container { max-width: 100%; padding: 0 20px; }
+  }
 
-  /* Tablets and below */
   @media (max-width: 1024px) {
     :root { --max-width: 960px; }
     .container { padding: 0 32px; }
@@ -624,11 +776,8 @@
     }
   }
 
-  /* Mobile (≤ 768px) */
   @media (max-width: 768px) {
     .container { padding: 0 20px; }
-
-    /* Nav */
     .nav-inner { height: 60px; }
     .nav-links { display: none; }
     .menu-toggle { display: flex; align-items: center; justify-content: center; }
@@ -654,18 +803,12 @@
     }
     .nav-links.open a:hover { background: var(--accent-soft); }
     .nav-links.open .theme-toggle { width: 100%; height: 44px; margin-top: 8px; }
-
-    /* Hero */
     .hero { padding: 64px 0 48px; }
     .hero-status { font-size: 11px; padding: 5px 10px; margin-bottom: 24px; }
     .hero-actions { gap: 10px; }
     .hero-actions .btn { flex: 1 1 auto; justify-content: center; min-width: 130px; }
-
-    /* Sections */
     section { padding: 56px 0; }
     .section-intro { margin-bottom: 36px; font-size: 1rem; }
-
-    /* Layouts collapse */
     .about-grid, .contact-grid {
       grid-template-columns: 1fr;
       gap: 32px;
@@ -674,60 +817,46 @@
       grid-template-columns: 1fr;
       gap: 16px;
     }
-
-    /* Cards */
     .skill-card, .project-card, .about-card { padding: 22px; }
-
-    /* Contact */
     form { padding: 22px; }
     .contact-info h2 { font-size: 2rem; }
     .social-link { padding: 14px 16px; }
-    .social-link:hover { transform: none; } /* avoid jumpy tap on mobile */
-
-    /* Better tap targets */
+    .social-link:hover { transform: none; } 
     .btn { padding: 13px 18px; min-height: 44px; }
     .theme-toggle, .menu-toggle { width: 40px; height: 40px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .certs-grid { grid-template-columns: repeat(2, 1fr); }
+    .projects-grid article[style*="grid-template-columns: 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
   }
-
-  /* Small phones (≤ 480px) */
   @media (max-width: 480px) {
     .container { padding: 0 16px; }
-
     .logo { font-size: 13px; }
-
     .hero { padding: 48px 0 40px; }
     .hero h1 { font-size: 2.1rem; line-height: 1.1; }
     .hero-sub { font-size: 0.98rem; margin-bottom: 28px; }
     .hero-actions { flex-direction: column; }
     .hero-actions .btn { width: 100%; }
-
     section { padding: 48px 0; scroll-margin-top: 70px; }
     .section-title { font-size: 1.6rem; }
     .section-label { font-size: 11px; }
-
     .skill-card, .project-card, .about-card { padding: 18px; border-radius: 12px; }
     .skill-card h3, .project-card h3 { font-size: 1.05rem; }
     .skill-icon { width: 40px; height: 40px; margin-bottom: 16px; }
-
     .gh-meta { flex-wrap: wrap; gap: 8px 12px; font-size: 11px; }
     .project-tech { margin-bottom: 16px; }
     .project-links { padding-top: 12px; gap: 14px; }
-
     .contact-info h2 { font-size: 1.7rem; }
     .contact-info p { font-size: 0.98rem; margin-bottom: 24px; }
     form { padding: 18px; border-radius: 12px; }
     .form-group input, .form-group textarea { font-size: 16px; } /* prevent iOS zoom */
-
     .social-link { padding: 12px 14px; gap: 12px; }
     .social-link span { font-size: 13px; }
     .social-link small { font-size: 11px; }
-
     .about-card li { font-size: 13px; padding: 9px 0; }
-
     footer { font-size: 11px; padding: 24px 0; }
   }
-
-  /* Reduce motion for users who prefer it */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
@@ -738,14 +867,14 @@
 </style>
 </head>
 <body data-theme="light">
-
-<!-- NAVIGATION -->
+<div class="spotlight" id="spotlight"></div>
 <nav>
   <div class="container nav-inner">
     <a href="#" class="logo">sophireak.dev</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#certs">Certs</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
       <li>
@@ -760,18 +889,13 @@
     </button>
   </div>
 </nav>
-
-<!-- HERO -->
 <header class="hero">
   <div class="container">
     <div class="hero-status">
       <span class="status-dot"></span>
       <span>Available for new opportunities</span>
     </div>
-    <h1>
-      Sophireak Soeng<br/>
-      <span class="accent">Cybersecurity & Developer.</span>
-    </h1>
+    <h1 id="heroTitle" data-line1="Sophireak Soeng" data-line2="Cybersecurity & Developer."></h1>
     <p class="hero-sub">
       I break things to make them stronger — and build software that's secure by design.
       Specialized in offensive security, defensive operations, and full-stack development.
@@ -791,8 +915,6 @@
     </div>
   </div>
 </header>
-
-<!-- ABOUT -->
 <section id="about">
   <div class="container">
     <div class="about-grid">
@@ -808,6 +930,25 @@
         <p>
           Always learning, always curious — currently deep in cloud security, threat modeling, and modern web stacks.
         </p>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="stat-num" data-target="3">0</div>
+            <div class="stat-label">Years exp.</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" data-target="20">0</div>
+            <div class="stat-label">CTFs solved</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" data-target="15">0</div>
+            <div class="stat-label">Projects shipped</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" data-target="100" data-suffix="%">0</div>
+            <div class="stat-label">Caffeine-powered</div>
+          </div>
+        </div>
       </div>
       <aside class="about-card reveal">
         <h4>// Quick facts</h4>
@@ -822,8 +963,6 @@
     </div>
   </div>
 </section>
-
-<!-- SKILLS -->
 <section id="skills">
   <div class="container">
     <div class="reveal">
@@ -848,7 +987,6 @@
           <span class="tag">OWASP Top 10</span>
         </div>
       </div>
-
       <div class="skill-card reveal">
         <div class="skill-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
@@ -864,7 +1002,6 @@
           <span class="tag">Incident Response</span>
         </div>
       </div>
-
       <div class="skill-card reveal">
         <div class="skill-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
@@ -883,18 +1020,124 @@
     </div>
   </div>
 </section>
-
-<!-- PROJECTS -->
+<section id="certs" class="certs-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Credentials</div>
+      <h2 class="section-title">Certifications & training.</h2>
+      <p class="section-intro">Continuously sharpening the toolkit. Replace these with your actual badges as you earn them.</p>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-badge reveal">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="cert-body">
+          <strong>CompTIA Security+</strong>
+          <small>In progress</small>
+        </div>
+      </div>
+      <div class="cert-badge reveal">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><polyline points="9 14 6 21 12 18 18 21 15 14"/></svg>
+        </div>
+        <div class="cert-body">
+          <strong>eJPT</strong>
+          <small>Junior Pentester</small>
+        </div>
+      </div>
+      <a class="cert-badge reveal" href="https://tryhackme.com/p/Sophireak.S" target="_blank" rel="noopener">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="cert-body">
+          <strong>TryHackMe — Sophireak.S</strong>
+          <small>View profile →</small>
+        </div>
+      </a>
+      <div class="cert-badge reveal">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <div class="cert-body">
+          <strong>Hack The Box</strong>
+          <small>Pro Hacker</small>
+        </div>
+      </div>
+      <div class="cert-badge reveal">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="cert-body">
+          <strong>OSCP</strong>
+          <small>Target 2026</small>
+        </div>
+      </div>
+      <div class="cert-badge reveal">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <div class="cert-body">
+          <strong>AWS Cloud Practitioner</strong>
+          <small>Foundational</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <section id="projects">
   <div class="container">
     <div class="reveal">
       <div class="section-label">Selected work</div>
       <h2 class="section-title">Projects.</h2>
-      <p class="section-intro">Live from my GitHub — automatically pulls my latest public repositories, sorted by recent activity.</p>
+      <p class="section-intro">Live from my GitHub — plus a featured production project.</p>
     </div>
-
+    <div class="projects-grid" style="margin-bottom: 24px;">
+      <article class="project-card reveal" style="grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+        <div>
+          <div class="project-header">
+            <span class="project-type">★ Featured · Full-Stack App</span>
+            <span class="project-status" style="background:#10b98120; color:#10b981; border-color:#10b98140;">Live</span>
+          </div>
+          <h3 style="font-size: 1.4rem; margin-bottom: 12px;">HealthCare Manager</h3>
+          <p style="margin-bottom: 16px;">A production-grade hospital management system built with Laravel. Handles patient records, appointment scheduling, staff management, pharmacy inventory, and analytics — all HIPAA-aware with role-based access control.</p>
+          <ul style="color: var(--text-muted); font-size: 14px; padding-left: 18px; margin-bottom: 20px;">
+            <li>Patient records with medical history & secure storage</li>
+            <li>Appointment scheduling with automated reminders</li>
+            <li>Staff management with RBAC for doctors, nurses, admins</li>
+            <li>Pharmacy inventory & low-stock alerts</li>
+            <li>Reports & analytics dashboard</li>
+          </ul>
+          <div class="project-tech" style="margin-bottom: 20px;">
+            <span class="tag">Laravel</span>
+            <span class="tag">PHP</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Blade</span>
+            <span class="tag">HIPAA-aware</span>
+            <span class="tag">RBAC</span>
+          </div>
+          <div class="project-links" style="border-top: none; padding-top: 0;">
+            <a href="https://hospitalmanage.me" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Visit live site →
+            </a>
+            <a href="https://github.com/sophireaksoeng" target="_blank" rel="noopener">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-1.93c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.95.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.17.92-.26 1.91-.39 2.89-.39s1.97.13 2.89.39c2.2-1.48 3.16-1.17 3.16-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.41-2.7 5.37-5.27 5.66.41.36.78 1.06.78 2.13v3.16c0 .31.21.66.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center; background: linear-gradient(135deg, #1e40af, #3b82f6); border-radius: 12px; padding: 32px; min-height: 240px;">
+          <div style="text-align:center; color:white;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.95; margin-bottom:12px;"><path d="M9 11h6m-3-3v6"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+            <div style="font-family: var(--mono); font-size: 18px; font-weight: 700;">HealthCare Manager</div>
+            <div style="font-family: var(--mono); font-size: 12px; opacity: 0.8; margin-top: 4px;">hospitalmanage.me</div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <h3 style="font-family: var(--mono); font-size: 13px; color: var(--text-subtle); text-transform: uppercase; letter-spacing: 0.1em; margin: 32px 0 16px;">// More from GitHub</h3>
     <div class="projects-grid" id="projectsGrid">
-      <!-- Loading skeleton -->
       <div class="project-card skeleton-card">
         <div class="skeleton skeleton-line short"></div>
         <div class="skeleton skeleton-line title"></div>
@@ -914,7 +1157,6 @@
         <div class="skeleton skeleton-line"></div>
       </div>
     </div>
-
     <div style="text-align:center; margin-top:32px;">
       <a href="https://github.com/sophireaksoeng" target="_blank" rel="noopener" class="btn btn-secondary" id="viewAllBtn">
         View all on GitHub
@@ -923,8 +1165,6 @@
     </div>
   </div>
 </section>
-
-<!-- CONTACT -->
 <section id="contact" class="contact">
   <div class="container">
     <div class="contact-grid">
@@ -932,7 +1172,6 @@
         <div class="section-label">Contact</div>
         <h2>Let's build<br/>something secure.</h2>
         <p>Got a project, an opportunity, or just want to talk shop about security and code? Drop a line — I respond within a day or two.</p>
-
         <div class="socials">
           <a class="social-link" href="mailto:sophireaksoeng@gmail.com">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -964,7 +1203,6 @@
           </a>
         </div>
       </div>
-
       <form id="contactForm" class="reveal" onsubmit="return sendForm(event)">
         <div class="form-group">
           <label for="name">Name</label>
@@ -988,8 +1226,6 @@
     </div>
   </div>
 </section>
-
-<!-- FOOTER -->
 <footer>
   <div class="container">
     © <span id="year"></span> Sophireak Soeng — Built with care, secured by design.
@@ -997,32 +1233,46 @@
 </footer>
 
 <script>
-  // ---------- Year ----------
   document.getElementById("year").textContent = new Date().getFullYear();
-
-  // ---------- Theme toggle (with persistence) ----------
+  (function buildHero() {
+    const h = document.getElementById("heroTitle");
+    if (!h) return;
+    const line1 = h.dataset.line1.split(" ");
+    const line2 = h.dataset.line2.split(" ");
+    let html = "", i = 0;
+    line1.forEach(w => { html += `<span class="word" style="animation-delay:${0.2 + i*0.08}s">${w}&nbsp;</span>`; i++; });
+    html += "<br/>";
+    html += '<span class="accent">';
+    line2.forEach(w => { html += `<span class="word" style="animation-delay:${0.2 + i*0.08}s">${w}&nbsp;</span>`; i++; });
+    html += "</span>";
+    h.innerHTML = html;
+  })();
+  const spotlight = document.getElementById("spotlight");
+  if (window.matchMedia("(pointer: fine)").matches) {
+    document.addEventListener("mousemove", (e) => {
+      spotlight.style.left = e.clientX + "px";
+      spotlight.style.top = e.clientY + "px";
+    });
+  } else {
+    spotlight.style.display = "none";
+  }
   const root = document.body;
   const themeToggle = document.getElementById("themeToggle");
   const stored = localStorage.getItem("theme");
   const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
   const initialTheme = stored || (prefersDark ? "dark" : "light");
   root.setAttribute("data-theme", initialTheme);
-
   themeToggle.addEventListener("click", () => {
     const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
     root.setAttribute("data-theme", next);
     try { localStorage.setItem("theme", next); } catch(e) {}
   });
-
-  // ---------- Mobile menu ----------
   const menuToggle = document.getElementById("menuToggle");
   const navLinks = document.getElementById("navLinks");
   menuToggle.addEventListener("click", () => navLinks.classList.toggle("open"));
   navLinks.querySelectorAll("a").forEach(a => {
     a.addEventListener("click", () => navLinks.classList.remove("open"));
   });
-
-  // ---------- Reveal on scroll ----------
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1032,12 +1282,8 @@
     });
   }, { threshold: 0.12 });
   document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-
-  // ---------- Config (EDIT ME) ----------
-  const GITHUB_USER = "sophireaksoeng";     // ← your GitHub username
-  const FORMSPREE_ID = "YOUR_FORM_ID";       // ← get one at formspree.io and paste the ID
-
-  // ---------- Contact form (Formspree + mailto fallback) ----------
+  const GITHUB_USER = "sophireaksoeng";    
+  //const FORMSPREE_ID = "YOUR_FORM_ID";      
   async function sendForm(e) {
     e.preventDefault();
     const msg = document.getElementById("formMsg");
@@ -1048,15 +1294,12 @@
       subject: form.subject.value.trim(),
       message: form.message.value.trim(),
     };
-
-    // If Formspree isn't configured, fall back to mailto
     if (!FORMSPREE_ID || FORMSPREE_ID === "YOUR_FORM_ID") {
       const body = `${encodeURIComponent(data.message)}%0D%0A%0D%0A— ${encodeURIComponent(data.name)} (${encodeURIComponent(data.email)})`;
       window.location.href = `mailto:sophireaksoeng@gmail.com?subject=${encodeURIComponent(data.subject)}&body=${body}`;
       msg.textContent = "Opening your email client…";
       return false;
     }
-
     msg.textContent = "Sending…";
     try {
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
@@ -1077,9 +1320,6 @@
     }
     return false;
   }
-
-  // ---------- GitHub Projects ----------
-  // Common language colors (matches GitHub)
   const LANG_COLORS = {
     JavaScript: "#f1e05a", TypeScript: "#3178c6", Python: "#3572A5",
     Go: "#00ADD8", Rust: "#dea584", Java: "#b07219", C: "#555555",
@@ -1142,8 +1382,6 @@
     const grid = document.getElementById("projectsGrid");
     const viewAllBtn = document.getElementById("viewAllBtn");
     if (viewAllBtn) viewAllBtn.href = `https://github.com/${GITHUB_USER}`;
-
-    // Cache for 1 hour to be nice to GitHub's API
     const cacheKey = `gh_repos_${GITHUB_USER}`;
     const cached = localStorage.getItem(cacheKey);
     if (cached) {
@@ -1180,6 +1418,25 @@
   }
 
   loadGithubRepos();
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = +el.dataset.target;
+      const suffix = el.dataset.suffix || "+";
+      const duration = 1400;
+      const startTime = performance.now();
+      const tick = (now) => {
+        const t = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.floor(target * eased) + (t === 1 ? suffix : "");
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      statObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll(".stat-num").forEach(el => statObserver.observe(el));
 </script>
 
 </body>
