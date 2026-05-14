@@ -850,7 +850,7 @@
     .contact-info h2 { font-size: 1.7rem; }
     .contact-info p { font-size: 0.98rem; margin-bottom: 24px; }
     form { padding: 18px; border-radius: 12px; }
-    .form-group input, .form-group textarea { font-size: 16px; } /* prevent iOS zoom */
+    .form-group input, .form-group textarea { font-size: 16px; } 
     .social-link { padding: 12px 14px; gap: 12px; }
     .social-link span { font-size: 13px; }
     .social-link small { font-size: 11px; }
@@ -1395,7 +1395,7 @@
     }
 
     try {
-      const res = await fetch(`https://api.github.com/users/sophireaks/repo${GITHUB_USER}/repos?sort=pushed&per_page=6`);
+      const res = await fetch(`https://api.github.com/users/sophireaks/repos${GITHUB_USER}/repos?sort=pushed&per_page=6`);
       if (!res.ok) throw new Error(`GitHub API ${res.status}`);
       const repos = await res.json();
       const filtered = repos
