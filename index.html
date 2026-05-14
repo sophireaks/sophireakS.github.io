@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sophireak Soeng — Cybersecurity & Developer</title>
+<meta name="description" content="Portfolio of Sophireak Soeng — Cybersecurity professional and full-stack developer. Pentesting, blue team, and web development." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafafa;
+    --bg-elev: #ffffff;
+    --text: #0a0a0a;
+    --text-muted: #525252;
+    --text-subtle: #737373;
+    --border: #e5e5e5;
+    --border-strong: #d4d4d4;
+    --accent: #0a0a0a;
+    --accent-soft: #f5f5f5;
+    --tag-bg: #f5f5f5;
+    --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+    --shadow-hover: 0 4px 6px rgba(0,0,0,0.05), 0 10px 24px rgba(0,0,0,0.08);
+    --radius: 14px;
+    --max-width: 1100px;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0a0a0a;
+    --bg-elev: #141414;
+    --text: #fafafa;
+    --text-muted: #a3a3a3;
+    --text-subtle: #737373;
+    --border: #262626;
+    --border-strong: #404040;
+    --accent: #fafafa;
+    --accent-soft: #1a1a1a;
+    --tag-bg: #1f1f1f;
+    --shadow: 0 1px 2px rgba(0,0,0,0.4), 0 4px 12px rgba(0,0,0,0.3);
+    --shadow-hover: 0 4px 6px rgba(0,0,0,0.4), 0 10px 24px rgba(0,0,0,0.5);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection { background: var(--text); color: var(--bg); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250,250,250,0.8);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s ease;
+  }
+  [data-theme="dark"] nav { background: rgba(10,10,10,0.8); }
+
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+  }
+
+  .logo {
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+  }
+  .logo::before { content: "> "; color: var(--text-subtle); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+  .theme-toggle:hover { background: var(--accent-soft); }
+  .theme-toggle svg { width: 16px; height: 16px; }
+  .theme-toggle .sun-icon { display: none; }
+  [data-theme="dark"] .theme-toggle .sun-icon { display: block; }
+  [data-theme="dark"] .theme-toggle .moon-icon { display: none; }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 120px 0 80px;
+  }
+
+  .hero-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+  .status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 0 3px rgba(16,185,129,0.2);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    margin-bottom: 24px;
+  }
+  .hero h1 .accent {
+    background: linear-gradient(120deg, var(--text) 0%, var(--text-muted) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    color: var(--text-muted);
+    max-width: 620px;
+    margin-bottom: 40px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    font-family: inherit;
+  }
+  .btn-primary {
+    background: var(--text);
+    color: var(--bg);
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-hover);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border-strong);
+  }
+  .btn-secondary:hover {
+    background: var(--accent-soft);
+  }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* ---------- SECTIONS ---------- */
+  section { padding: 80px 0; scroll-margin-top: 80px; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .section-label::before { content: "// "; }
+
+  .section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .section-intro {
+    color: var(--text-muted);
+    max-width: 640px;
+    margin-bottom: 48px;
+    font-size: 1.05rem;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    font-size: 1.05rem;
+  }
+  .about-text strong { color: var(--text); font-weight: 600; }
+
+  .about-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+  }
+  .about-card h4 {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  .about-card ul { list-style: none; }
+  .about-card li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .about-card li:last-child { border-bottom: none; }
+  .about-card li span:first-child { color: var(--text-subtle); }
+  .about-card li span:last-child { color: var(--text); font-weight: 500; }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .skill-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+  }
+  .skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border-strong);
+  }
+  .skill-icon {
+    width: 44px; height: 44px;
+    background: var(--accent-soft);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  .skill-icon svg { width: 22px; height: 22px; color: var(--text); }
+  .skill-card h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .skill-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    background: var(--tag-bg);
+    color: var(--text-muted);
+    padding: 4px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .project-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border-strong);
+  }
+  .project-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--text), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .project-card:hover::before { opacity: 1; }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  .project-type {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .project-status {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 100px;
+    background: var(--tag-bg);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+  .project-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .project-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .project-links {
+    display: flex;
+    gap: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .project-links a {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease;
+  }
+  .project-links a:hover { color: var(--text); }
+  .project-links svg { width: 14px; height: 14px; }
+
+  /* ---------- SKELETONS & GH META ---------- */
+  .skeleton {
+    background: linear-gradient(90deg, var(--tag-bg) 0%, var(--accent-soft) 50%, var(--tag-bg) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+    height: 12px;
+    margin-bottom: 12px;
+  }
+  .skeleton-line.short { width: 30%; height: 10px; }
+  .skeleton-line.title { width: 60%; height: 18px; margin: 16px 0; }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  .gh-meta {
+    display: flex;
+    gap: 14px;
+    color: var(--text-subtle);
+    font-size: 12px;
+    font-family: var(--mono);
+    margin-bottom: 16px;
+  }
+  .gh-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .gh-meta svg { width: 12px; height: 12px; }
+  .lang-dot {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #888;
+  }
+
+  .project-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 48px;
+    color: var(--text-muted);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--radius);
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact {
+    background: var(--bg-elev);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .contact-info h2 {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .contact-info p {
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    font-size: 1.05rem;
+  }
+  .socials {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .social-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    background: var(--bg);
+  }
+  .social-link:hover {
+    border-color: var(--border-strong);
+    transform: translateX(4px);
+  }
+  .social-link svg { width: 20px; height: 20px; color: var(--text-muted); }
+  .social-link span { font-size: 14px; font-weight: 500; }
+  .social-link small { font-size: 12px; color: var(--text-subtle); display: block; margin-top: 2px; font-family: var(--mono); }
+
+  form {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 11px 14px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--text);
+    font-family: inherit;
+    transition: all 0.2s ease;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--text);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  form button {
+    width: 100%;
+    padding: 13px;
+    font-size: 14px;
+    font-weight: 600;
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+  form button:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-hover);
+  }
+  .form-msg {
+    font-size: 13px;
+    margin-top: 12px;
+    color: var(--text-subtle);
+    text-align: center;
+    min-height: 18px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    padding: 32px 0;
+    text-align: center;
+    color: var(--text-subtle);
+    font-size: 13px;
+    font-family: var(--mono);
+  }
+
+  /* ---------- REVEAL ANIMATION ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+
+  /* Tablets and below */
+  @media (max-width: 1024px) {
+    :root { --max-width: 960px; }
+    .container { padding: 0 32px; }
+    .about-grid { gap: 48px; }
+    .contact-grid { gap: 48px; }
+    .skills-grid, .projects-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+  }
+
+  /* Mobile (≤ 768px) */
+  @media (max-width: 768px) {
+    .container { padding: 0 20px; }
+
+    /* Nav */
+    .nav-inner { height: 60px; }
+    .nav-links { display: none; }
+    .menu-toggle { display: flex; align-items: center; justify-content: center; }
+    .nav-links.open {
+      display: flex;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background: var(--bg-elev);
+      flex-direction: column;
+      padding: 16px 20px 24px;
+      gap: 4px;
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .nav-links.open li { width: 100%; }
+    .nav-links.open a {
+      display: block;
+      padding: 14px 12px;
+      font-size: 15px;
+      border-radius: 8px;
+    }
+    .nav-links.open a:hover { background: var(--accent-soft); }
+    .nav-links.open .theme-toggle { width: 100%; height: 44px; margin-top: 8px; }
+
+    /* Hero */
+    .hero { padding: 64px 0 48px; }
+    .hero-status { font-size: 11px; padding: 5px 10px; margin-bottom: 24px; }
+    .hero-actions { gap: 10px; }
+    .hero-actions .btn { flex: 1 1 auto; justify-content: center; min-width: 130px; }
+
+    /* Sections */
+    section { padding: 56px 0; }
+    .section-intro { margin-bottom: 36px; font-size: 1rem; }
+
+    /* Layouts collapse */
+    .about-grid, .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .skills-grid, .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    /* Cards */
+    .skill-card, .project-card, .about-card { padding: 22px; }
+
+    /* Contact */
+    form { padding: 22px; }
+    .contact-info h2 { font-size: 2rem; }
+    .social-link { padding: 14px 16px; }
+    .social-link:hover { transform: none; } /* avoid jumpy tap on mobile */
+
+    /* Better tap targets */
+    .btn { padding: 13px 18px; min-height: 44px; }
+    .theme-toggle, .menu-toggle { width: 40px; height: 40px; }
+  }
+
+  /* Small phones (≤ 480px) */
+  @media (max-width: 480px) {
+    .container { padding: 0 16px; }
+
+    .logo { font-size: 13px; }
+
+    .hero { padding: 48px 0 40px; }
+    .hero h1 { font-size: 2.1rem; line-height: 1.1; }
+    .hero-sub { font-size: 0.98rem; margin-bottom: 28px; }
+    .hero-actions { flex-direction: column; }
+    .hero-actions .btn { width: 100%; }
+
+    section { padding: 48px 0; scroll-margin-top: 70px; }
+    .section-title { font-size: 1.6rem; }
+    .section-label { font-size: 11px; }
+
+    .skill-card, .project-card, .about-card { padding: 18px; border-radius: 12px; }
+    .skill-card h3, .project-card h3 { font-size: 1.05rem; }
+    .skill-icon { width: 40px; height: 40px; margin-bottom: 16px; }
+
+    .gh-meta { flex-wrap: wrap; gap: 8px 12px; font-size: 11px; }
+    .project-tech { margin-bottom: 16px; }
+    .project-links { padding-top: 12px; gap: 14px; }
+
+    .contact-info h2 { font-size: 1.7rem; }
+    .contact-info p { font-size: 0.98rem; margin-bottom: 24px; }
+    form { padding: 18px; border-radius: 12px; }
+    .form-group input, .form-group textarea { font-size: 16px; } /* prevent iOS zoom */
+
+    .social-link { padding: 12px 14px; gap: 12px; }
+    .social-link span { font-size: 13px; }
+    .social-link small { font-size: 11px; }
+
+    .about-card li { font-size: 13px; padding: 9px 0; }
+
+    footer { font-size: 11px; padding: 24px 0; }
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body data-theme="light">
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="logo">sophireak.dev</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-status">
+      <span class="status-dot"></span>
+      <span>Available for new opportunities</span>
+    </div>
+    <h1>
+      Sophireak Soeng<br/>
+      <span class="accent">Cybersecurity & Developer.</span>
+    </h1>
+    <p class="hero-sub">
+      I break things to make them stronger — and build software that's secure by design.
+      Specialized in offensive security, defensive operations, and full-stack development.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">
+        View my work
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="resume.pdf" download class="btn btn-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Resume
+      </a>
+      <a href="#contact" class="btn btn-secondary">
+        Get in touch
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Security mindset, builder's hands.</h2>
+        <p>
+          I'm a <strong>cybersecurity professional and developer</strong> who lives at the intersection of offense, defense, and engineering. By day I help organizations find vulnerabilities before attackers do; by night I build clean, secure, and well-tested software.
+        </p>
+        <p>
+          My approach: think like an adversary, build like an engineer, document like a teacher. I believe the strongest systems come from teams that understand <em>both</em> sides of the fence.
+        </p>
+        <p>
+          Always learning, always curious — currently deep in cloud security, threat modeling, and modern web stacks.
+        </p>
+      </div>
+      <aside class="about-card reveal">
+        <h4>// Quick facts</h4>
+        <ul>
+          <li><span>Role</span><span>Security & Dev</span></li>
+          <li><span>Focus</span><span>Pentest / Web</span></li>
+          <li><span>Stack</span><span>Python · JS · Go</span></li>
+          <li><span>Status</span><span>Open to work</span></li>
+          <li><span>Location</span><span>Remote / Worldwide</span></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Capabilities</div>
+      <h2 class="section-title">What I do.</h2>
+      <p class="section-intro">A blend of red, blue, and engineering — I bring full-spectrum security thinking to every product I touch.</p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h3>Pentesting & Red Team</h3>
+        <p>Finding the gaps in web apps, networks, and infrastructure before adversaries do.</p>
+        <div class="tag-list">
+          <span class="tag">Burp Suite</span>
+          <span class="tag">Metasploit</span>
+          <span class="tag">Nmap</span>
+          <span class="tag">Kali Linux</span>
+          <span class="tag">OSINT</span>
+          <span class="tag">OWASP Top 10</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        </div>
+        <h3>Defensive / Blue Team</h3>
+        <p>Detecting, responding to, and hardening against threats with modern SOC tools.</p>
+        <div class="tag-list">
+          <span class="tag">SIEM</span>
+          <span class="tag">Splunk</span>
+          <span class="tag">Wireshark</span>
+          <span class="tag">IDS / IPS</span>
+          <span class="tag">Threat Hunting</span>
+          <span class="tag">Incident Response</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <div class="skill-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Web Dev (Full-stack)</h3>
+        <p>Building secure, performant web apps end-to-end — from API to UI.</p>
+        <div class="tag-list">
+          <span class="tag">JavaScript</span>
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">REST / GraphQL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Selected work</div>
+      <h2 class="section-title">Projects.</h2>
+      <p class="section-intro">Live from my GitHub — automatically pulls my latest public repositories, sorted by recent activity.</p>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Loading skeleton -->
+      <div class="project-card skeleton-card">
+        <div class="skeleton skeleton-line short"></div>
+        <div class="skeleton skeleton-line title"></div>
+        <div class="skeleton skeleton-line"></div>
+        <div class="skeleton skeleton-line"></div>
+      </div>
+      <div class="project-card skeleton-card">
+        <div class="skeleton skeleton-line short"></div>
+        <div class="skeleton skeleton-line title"></div>
+        <div class="skeleton skeleton-line"></div>
+        <div class="skeleton skeleton-line"></div>
+      </div>
+      <div class="project-card skeleton-card">
+        <div class="skeleton skeleton-line short"></div>
+        <div class="skeleton skeleton-line title"></div>
+        <div class="skeleton skeleton-line"></div>
+        <div class="skeleton skeleton-line"></div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:32px;">
+      <a href="https://github.com/sophireaksoeng" target="_blank" rel="noopener" class="btn btn-secondary" id="viewAllBtn">
+        View all on GitHub
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="section-label">Contact</div>
+        <h2>Let's build<br/>something secure.</h2>
+        <p>Got a project, an opportunity, or just want to talk shop about security and code? Drop a line — I respond within a day or two.</p>
+
+        <div class="socials">
+          <a class="social-link" href="mailto:sophireaksoeng@gmail.com">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div>
+              <span>Email</span>
+              <small>sophireaksoeng@gmail.com</small>
+            </div>
+          </a>
+          <a class="social-link" href="https://github.com/sophireaksoeng" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-1.93c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.95.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.17.92-.26 1.91-.39 2.89-.39s1.97.13 2.89.39c2.2-1.48 3.16-1.17 3.16-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.41-2.7 5.37-5.27 5.66.41.36.78 1.06.78 2.13v3.16c0 .31.21.66.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+            <div>
+              <span>GitHub</span>
+              <small>github.com/sophireaksoeng</small>
+            </div>
+          </a>
+          <a class="social-link" href="https://linkedin.com/" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+            <div>
+              <span>LinkedIn</span>
+              <small>linkedin.com/in/sophireak</small>
+            </div>
+          </a>
+          <a class="social-link" href="https://x.com/" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <div>
+              <span>X / Twitter</span>
+              <small>@sophireak</small>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <form id="contactForm" class="reveal" onsubmit="return sendForm(event)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required placeholder="Your name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="you@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required placeholder="What's this about?" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="Tell me about your project, role, or idea..."></textarea>
+        </div>
+        <button type="submit">Send message →</button>
+        <p class="form-msg" id="formMsg"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    © <span id="year"></span> Sophireak Soeng — Built with care, secured by design.
+  </div>
+</footer>
+
+<script>
+  // ---------- Year ----------
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // ---------- Theme toggle (with persistence) ----------
+  const root = document.body;
+  const themeToggle = document.getElementById("themeToggle");
+  const stored = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const initialTheme = stored || (prefersDark ? "dark" : "light");
+  root.setAttribute("data-theme", initialTheme);
+
+  themeToggle.addEventListener("click", () => {
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch(e) {}
+  });
+
+  // ---------- Mobile menu ----------
+  const menuToggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
+  menuToggle.addEventListener("click", () => navLinks.classList.toggle("open"));
+  navLinks.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", () => navLinks.classList.remove("open"));
+  });
+
+  // ---------- Reveal on scroll ----------
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+  // ---------- Config (EDIT ME) ----------
+  const GITHUB_USER = "sophireaksoeng";     // ← your GitHub username
+  const FORMSPREE_ID = "YOUR_FORM_ID";       // ← get one at formspree.io and paste the ID
+
+  // ---------- Contact form (Formspree + mailto fallback) ----------
+  async function sendForm(e) {
+    e.preventDefault();
+    const msg = document.getElementById("formMsg");
+    const form = document.getElementById("contactForm");
+    const data = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      subject: form.subject.value.trim(),
+      message: form.message.value.trim(),
+    };
+
+    // If Formspree isn't configured, fall back to mailto
+    if (!FORMSPREE_ID || FORMSPREE_ID === "YOUR_FORM_ID") {
+      const body = `${encodeURIComponent(data.message)}%0D%0A%0D%0A— ${encodeURIComponent(data.name)} (${encodeURIComponent(data.email)})`;
+      window.location.href = `mailto:sophireaksoeng@gmail.com?subject=${encodeURIComponent(data.subject)}&body=${body}`;
+      msg.textContent = "Opening your email client…";
+      return false;
+    }
+
+    msg.textContent = "Sending…";
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) {
+        msg.textContent = "✓ Message sent — I'll reply soon.";
+        msg.style.color = "#10b981";
+        form.reset();
+      } else {
+        throw new Error("Submission failed");
+      }
+    } catch (err) {
+      msg.textContent = "Couldn't send. Try emailing directly.";
+      msg.style.color = "#ef4444";
+    }
+    return false;
+  }
+
+  // ---------- GitHub Projects ----------
+  // Common language colors (matches GitHub)
+  const LANG_COLORS = {
+    JavaScript: "#f1e05a", TypeScript: "#3178c6", Python: "#3572A5",
+    Go: "#00ADD8", Rust: "#dea584", Java: "#b07219", C: "#555555",
+    "C++": "#f34b7d", "C#": "#178600", Ruby: "#701516", PHP: "#4F5D95",
+    HTML: "#e34c26", CSS: "#563d7c", Shell: "#89e051", Vue: "#41b883",
+    Swift: "#F05138", Kotlin: "#A97BFF", Dart: "#00B4AB", Lua: "#000080",
+    PowerShell: "#012456", Dockerfile: "#384d54", Makefile: "#427819"
+  };
+
+  function escHtml(s) {
+    return (s || "").replace(/[&<>"']/g, c => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    }[c]));
+  }
+
+  function timeAgo(date) {
+    const s = Math.floor((Date.now() - new Date(date)) / 1000);
+    const units = [["y",31536000],["mo",2592000],["w",604800],["d",86400],["h",3600],["m",60]];
+    for (const [u, v] of units) if (s >= v) return `${Math.floor(s/v)}${u} ago`;
+    return "just now";
+  }
+
+  function renderRepo(r) {
+    const lang = r.language || "—";
+    const color = LANG_COLORS[lang] || "#888";
+    const tags = (r.topics || []).slice(0, 4).map(t => `<span class="tag">${escHtml(t)}</span>`).join("");
+    return `
+      <article class="project-card reveal visible">
+        <div class="project-header">
+          <span class="project-type">${r.fork ? "Fork" : "Repository"}</span>
+          <span class="project-status">${r.archived ? "Archived" : "Active"}</span>
+        </div>
+        <h3>${escHtml(r.name)}</h3>
+        <p>${escHtml(r.description || "No description provided.")}</p>
+        <div class="gh-meta">
+          <span><span class="lang-dot" style="background:${color}"></span>${escHtml(lang)}</span>
+          <span>★ ${r.stargazers_count}</span>
+          <span>⑂ ${r.forks_count}</span>
+          <span>↻ ${timeAgo(r.pushed_at)}</span>
+        </div>
+        ${tags ? `<div class="project-tech">${tags}</div>` : ""}
+        <div class="project-links">
+          <a href="${escHtml(r.html_url)}" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.55v-1.93c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.34.95.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.27-5.24-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.17.92-.26 1.91-.39 2.89-.39s1.97.13 2.89.39c2.2-1.48 3.16-1.17 3.16-1.17.62 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.41-2.7 5.37-5.27 5.66.41.36.78 1.06.78 2.13v3.16c0 .31.21.66.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
+            Code
+          </a>
+          ${r.homepage ? `<a href="${escHtml(r.homepage)}" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live
+          </a>` : ""}
+        </div>
+      </article>`;
+  }
+
+  function renderEmpty(msg) {
+    return `<div class="project-empty">${escHtml(msg)}</div>`;
+  }
+
+  async function loadGithubRepos() {
+    const grid = document.getElementById("projectsGrid");
+    const viewAllBtn = document.getElementById("viewAllBtn");
+    if (viewAllBtn) viewAllBtn.href = `https://github.com/${GITHUB_USER}`;
+
+    // Cache for 1 hour to be nice to GitHub's API
+    const cacheKey = `gh_repos_${GITHUB_USER}`;
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) {
+      try {
+        const { ts, data } = JSON.parse(cached);
+        if (Date.now() - ts < 3600000 && Array.isArray(data)) {
+          grid.innerHTML = data.map(renderRepo).join("");
+          return;
+        }
+      } catch(_) {}
+    }
+
+    try {
+      const res = await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=pushed&per_page=6`);
+      if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+      const repos = await res.json();
+      const filtered = repos
+        .filter(r => !r.fork)
+        .sort((a, b) => b.stargazers_count - a.stargazers_count || new Date(b.pushed_at) - new Date(a.pushed_at))
+        .slice(0, 6);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = renderEmpty(`No public repos found for @${GITHUB_USER} yet. Push some code and they'll show up here automatically.`);
+        return;
+      }
+
+      grid.innerHTML = filtered.map(renderRepo).join("");
+      try {
+        localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), data: filtered }));
+      } catch(_) {}
+    } catch (err) {
+      grid.innerHTML = renderEmpty(`Couldn't load GitHub repos (${err.message}). Update GITHUB_USER in the script and try again.`);
+    }
+  }
+
+  loadGithubRepos();
+</script>
+
+</body>
+</html>
