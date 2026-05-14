@@ -2,7 +2,7 @@
 
 Personal portfolio website. Modern minimal design with dark mode, live GitHub project feed, and contact form.
 
-**Live site:** https://sophireak.github.io/portfolio (update after deploy)
+**Live site:** https://sophireaks.github.io/portfolio (update after deploy)
 
 ## Stack
 - Single-file HTML, CSS, JavaScript (no build step)
