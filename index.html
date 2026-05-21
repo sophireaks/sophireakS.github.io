@@ -1813,7 +1813,7 @@
   })();
 
   /* ── CERT MODAL ─────────────────────────────────────── */
-  (function certModal() {
+  document.addEventListener('DOMContentLoaded', function certModal() {
     const modal    = document.getElementById('certModal');
     const embed    = document.getElementById('certModalEmbed');
     const fallback = document.getElementById('certModalFallback');
@@ -1850,7 +1850,7 @@
     closeBtn.addEventListener('click', close);
     backdrop.addEventListener('click', close);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-  })();
+  });
 </script>
 
 <!-- Cert PDF modal -->
