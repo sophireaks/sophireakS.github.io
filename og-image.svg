@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#000000"/>
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <text x="80" y="100" font-family="ui-monospace,monospace" font-size="18" fill="#444444">&gt; sophireaks.github.io</text>
+  <text x="80" y="300" font-family="ui-sans-serif,system-ui,sans-serif" font-size="80" font-weight="800" fill="#f0f0f0" letter-spacing="-3">Sophireak Soeng</text>
+  <line x1="80" y1="340" x2="700" y2="340" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <text x="80" y="400" font-family="ui-sans-serif,system-ui,sans-serif" font-size="30" fill="#777777">Cybersecurity &amp; Developer</text>
+  <circle cx="80" cy="490" r="7" fill="#10b981"/>
+  <text x="102" y="497" font-family="ui-monospace,monospace" font-size="18" fill="#555555">Available for new opportunities</text>
+</svg>
