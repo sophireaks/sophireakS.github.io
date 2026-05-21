@@ -1059,31 +1059,7 @@
     html { scroll-behavior: auto; }
   }
 
-  .hero-grid {
-    display: flex;
-    align-items: center;
-    gap: 72px;
-  }
-  .hero-content { flex: 1; min-width: 0; }
-  .hero-avatar-wrap { flex-shrink: 0; animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.5s both; }
-  .hero-photo {
-    width: 220px;
-    height: 280px;
-    object-fit: cover;
-    object-position: top center;
-    display: block;
-    border-radius: 4px;
-    filter: grayscale(15%) contrast(1.05);
-    transition: filter 0.4s ease;
-  }
-  .hero-photo:hover { filter: grayscale(0%) contrast(1.08); }
-  @media (max-width: 768px) {
-    .hero-grid { flex-direction: column-reverse; gap: 32px; align-items: flex-start; }
-    .hero-photo { width: 120px; height: 150px; }
-  }
-  @media (max-width: 480px) {
-    .hero-photo { width: 96px; height: 120px; }
-  }
+  /* hero is full-width text only */
 
   /* ── ANIMATION SYSTEM ────────────────────────────────────── */
   .hero-type {
@@ -1250,34 +1226,27 @@
 </nav>
 <header class="hero">
   <div class="container">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <div class="hero-status">
-          <span class="status-dot"></span>
-          <span>Available for new opportunities</span>
-        </div>
-        <h1 id="heroTitle" data-line1="Sophireak Soeng" data-line2="Cybersecurity & Developer."></h1>
-        <div class="hero-divider"></div>
-        <p class="hero-type"><span id="typeTarget"></span><span class="type-cursor"></span></p>
-        <p class="hero-sub">
-          I break things to make them stronger — and build software that's secure by design.
-          Specialized in offensive security, defensive operations, and full-stack development.
-        </p>
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">
-            View my work
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-          <a href="resume.pdf" download class="btn btn-secondary">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Resume
-          </a>
-          <a href="#contact" class="btn btn-secondary">Get in touch</a>
-        </div>
-      </div>
-      <div class="hero-avatar-wrap">
-        <img src="photo_nobg.png" alt="Sophireak Soeng" class="hero-photo" />
-      </div>
+    <div class="hero-status">
+      <span class="status-dot"></span>
+      <span>Available for new opportunities</span>
+    </div>
+    <h1 id="heroTitle" data-line1="Sophireak Soeng" data-line2="Cybersecurity & Developer."></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-type"><span id="typeTarget"></span><span class="type-cursor"></span></p>
+    <p class="hero-sub">
+      I break things to make them stronger — and build software that's secure by design.
+      Specialized in offensive security, defensive operations, and full-stack development.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">
+        View my work
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="resume.pdf" download class="btn btn-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Resume
+      </a>
+      <a href="#contact" class="btn btn-secondary">Get in touch</a>
     </div>
   </div>
 </header>
